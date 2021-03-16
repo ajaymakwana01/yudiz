@@ -36,4 +36,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * this function is defining many to many relationship with prodcut tabel
+     * so that we can grab all the product which user has purchased
+     */
+    public function order()
+    {
+        return $this->belongsToMany('App\Product', 'orders')->withPivot('purchased_quantity', 'paid_amount');
+    }
 }
