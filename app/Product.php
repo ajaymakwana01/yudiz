@@ -75,7 +75,7 @@ class Product extends Model
    */
   public function getPopularProduct()
   {
-    return Product::whereHas('user')->withCount('user as popluarity')->orderBy('popluarity', 'desc')->take(5)->get()->toArray();
+    return Product::whereHas('user')->withCount('user as popluarity')->orderBy('popluarity', 'desc')->take(10)->get()->toArray();
   }
 
 
