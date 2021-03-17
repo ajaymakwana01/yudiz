@@ -45,8 +45,11 @@ class AdminAuthController extends Controller
      */
     public function dashboard()
     {
-        $orders = User::whereHas('order')->with('order:id,product_name')->get()->toArray();
-        return view('admin.home', compact('orders'));
+        $users = new User();
+        $orders = $users->getUserWithOrder();
+        $product = new Product();
+        $popularProduct = $product->getPopularProduct();
+        return view('admin.home', compact('orders', 'popularProduct'));
     }
 
     /**

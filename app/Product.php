@@ -70,5 +70,13 @@ class Product extends Model
       return $updateCount;
   }
 
+  /**
+   * get to 10 popular product which are purchased highest number of time among users
+   */
+  public function getPopularProduct()
+  {
+    return Product::whereHas('user')->withCount('user as popluarity')->orderBy('popluarity', 'desc')->take(5)->get()->toArray();
+  }
+
 
 }

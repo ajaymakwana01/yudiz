@@ -132,6 +132,32 @@
                     <strong>{{ __('Noone hase purchased anything') }}</strong>
                 @endif
             </div>
+
+            <div class="card" style="margin-top: 15px">
+                <div class="card-header"><strong>{{ __('Popular Products') }}</strong></div>
+                @if (!empty($popularProduct))
+                <div class="container">
+                    <div class="card-body">
+                        <table class="table table-condensed">
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>Total Order Placed</th>
+                            </tr>
+                            @foreach ($popularProduct as $product)
+                                <tr>
+                                    <th>{{ $product['product_name'] }}</th>
+                                    <th>{{ $product['product_price'] }}</th>
+                                    <th>{{ $product['popluarity'] }}</th>
+                                </tr>
+                            @endforeach
+                        </table>
+                    </div>
+                </div>
+                @else
+                    <strong>{{ __('We nothing to show!') }}</strong>
+                @endif
+            </div>
         </div>
     </div>
 </div>

@@ -45,4 +45,12 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Product', 'orders')->withPivot('purchased_quantity', 'paid_amount');
     }
+
+    /**
+     * get all the user info with his order to show on admin side
+     */
+    public function getUserWithOrder()
+    {
+        return User::whereHas('order')->with('order:id,product_name')->get()->toArray();
+    }
 }
