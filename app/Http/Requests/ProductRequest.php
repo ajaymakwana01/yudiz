@@ -37,7 +37,6 @@ class ProductRequest extends FormRequest
      */
     protected function failedValidation(Validator $validator)
     {
-        $response = $validator->getMessageBag();
         return redirect()->back()->with($this->request);
     }
 }
